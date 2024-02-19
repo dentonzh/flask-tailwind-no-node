@@ -19,9 +19,9 @@ If on Linux or Mac, run `chmod +x tailwindcss` to make `tailwindcss` executable.
 Via command line: `python -m venv path/to/new/virtual/environment`
 Followed by this command: `pip install -r requirements.txt`
 
-## Run your project
+## Run your project in debug mode
 
-Via command line: `flask run`
+Via command line: `flask run --debug`
 
 Note that `app/__init__.py` contains code that runs the `tailwindcss` executable. When you make changes to any of the templates in `app/templates`, `tailwindcss` will automatically compile a new `output.css` file.
 
