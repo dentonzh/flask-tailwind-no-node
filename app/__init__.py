@@ -6,16 +6,21 @@ app.debug = True
 
 with app.app_context():
     if app.debug:
-        subprocess.Popen(
-            [
-                './tailwindcss',
-                '-i',
-                'app/static/css/input.css',
-                '-o',
-                'app/static/css/output.css',
-                '--watch',
-            ]
-        )
+        try:
+            output = subprocess.check_output(['pgrep', '-f', './tailwindcss'])
+        except subprocess.CalledProcessError:
+            print('Starting Tailwind CLI...')
+            subprocess.Popen(
+                [
+                    './tailwindcss',
+                    '-i',
+                    'app/static/css/input.css',
+                    '-o',
+                    'app/static/css/output.css',
+                    '--watch',
+                ]
+            )
+
 
 @app.route('/')
 def hello():
